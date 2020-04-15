@@ -5,6 +5,7 @@ import Header from '../Header'
 import Main from "../Main";
 import SelectOne from "../Select-one";
 import EditTable from "../Edit-table";
+import MakeQuery from "../Make-query";
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
        <div className="cover">
            <div className="center">
                <Header />
-               <EditTable/>
+               <MakeQuery/>
+               {/*<EditTable/>*/}
                {/*<Main/>*/}
                {/*<SelectOne/>*/}
                <footer className="footer">

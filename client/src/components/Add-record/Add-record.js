@@ -5,9 +5,7 @@ import './Add-record.css';
 function AddRecord(){
     return(
        <>
-           <button type="button" className="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">Add new record
-           </button>
-
+           <button type="button" className="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">Add new record</button>
            <div id="myModal" className="modal" role="dialog">
                <div className="modal-dialog">
                    <div className="modal-content">
