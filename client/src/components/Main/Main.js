@@ -1,12 +1,16 @@
 import React from "react";
 import "./Main.css"
+import {NavLink} from "react-router-dom";
+import MainBtnLink from "../Main-btn-link";
+
+
 
 function Main(){
     return(
         <><section className="body">
             <ul className="list">
-                <li className={"mainBtn"}><a href="">Запити</a></li>
-                <li className={"mainBtn"}><a href="">Редагувати </a></li>
+                <MainBtnLink className={"mainBtn"} name={"Запити"} id={"query"}/>
+                <MainBtnLink className={"mainBtn"} name={"Редагувати"} id={"edit"}/>
             </ul>
         </section></>
     )

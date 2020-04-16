@@ -25,7 +25,8 @@
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   padding: 30px 50px 20px;
   position: relative; }
 .center:after {
@@ -38,8 +39,6 @@
   right: 0;
   position: absolute;
   z-index: -1; }
-
-
 
 .body {
   height: 60vh;
@@ -57,15 +56,18 @@
 .list {
   display: -webkit-box;
   display: -ms-flexbox;
+  max-width: 50vw;
   display: flex;
   justify-content: space-evenly;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  padding: 4vh 0; }
+  margin: 0 auto;}
 .list li a {
+
+  margin: 10px;
   border: 3px solid #4090ff;
   display: block;
-  padding: 4vh 30px;
+  padding: 4vh 2vw;
   font-size: 20px;
   color: #000;
   position: relative;
