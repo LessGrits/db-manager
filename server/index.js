@@ -19,9 +19,10 @@ app.listen(5000,()=>{
 //create a record
 app.post("/records", async (req,res)=>{
    try{
-       const {fullName}  = req.body;
-       console.log(fullName);
-        const newRecord = await pool.query(`INSERT INTO members (full_name) VALUES(?) `, [fullName]);
+
+       const {input1,input2,input3,input4,input5,input6,input7}  = req.body;
+       console.log(input1);
+        const newRecord = await pool.query(`INSERT INTO members (full_name,date_of_birth,english_level,committee,date_of_joining,age,status) VALUES(?,?,?,?,?,?,?) `, [input1,input2,input3,input4,input5,input6,input7]);
 
       res.json(newRecord);
    }

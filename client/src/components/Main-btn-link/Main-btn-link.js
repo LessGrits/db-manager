@@ -5,9 +5,8 @@ import './Main-btn-link.css'
 const MainBtnLink = (props)=>{
     const {name} = props;
     const {id} = props;
-
     return(
-        <li ><NavLink to={`/select-one/${id}`}>{name}</NavLink></li>
+        <li ><NavLink to={id}>{name}</NavLink></li>
     )
 };
 

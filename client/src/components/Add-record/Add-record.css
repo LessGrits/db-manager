@@ -1,21 +1,37 @@
 .modal-backdrop{
     z-index: 0 !important;
+    height: 100vh;
 }
 
 .add-record{
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 
 }
 
-.add-record .form-control{
-    max-width: 60%;
-    margin-left: 20px;
-}
-
-.modal-content{
+form{
+    background: #fff;
     padding: 50px;
-    margin-top: 70%;
+
+}
+
+.edit-body form{
+    width: 100%;
+}
+
+label{
+    display: block;
+    padding: 10px 0;
+    width: 30%;
+}
+
+input{
+    margin-left: 10px;
+}
+.modal-dialog{
+    margin-top: 30vh;
     transform: translateY(-50%);
 }
+
