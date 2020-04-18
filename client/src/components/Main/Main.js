@@ -5,7 +5,6 @@ import MainBtnLink from "../Main-btn-link";
 
 
 const Main = (props) =>{
-    debugger;
     return(
         <><section className="body">
             <ul className="list">

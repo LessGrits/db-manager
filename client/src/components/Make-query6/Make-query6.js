@@ -1,5 +1,5 @@
 import React from "react";
-import './Make-query6.css'
+import '../Make-query1/Make-query1.css'
 
 function MakeQuery6(){
 return(

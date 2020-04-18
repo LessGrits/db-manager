@@ -8,30 +8,35 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-
 }
 
 form{
     background: #fff;
     padding: 50px;
-
 }
 
-.edit-body form{
-    width: 100%;
-}
+
+
 
 label{
     display: block;
     padding: 10px 0;
-    width: 30%;
+    width: 40%;
+    color: #495057;
 }
 
 input{
     margin-left: 10px;
 }
+
+.edit-btn, .add-btn{
+    margin: 30px auto;
+}
+
+
 .modal-dialog{
     margin-top: 30vh;
     transform: translateY(-50%);
+    max-width: 1000px;
 }
 

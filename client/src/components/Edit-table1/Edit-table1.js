@@ -2,13 +2,14 @@ import React, {useEffect, useState} from "react";
 import "./Edit-table1.css"
 import '../Add-record/Add-record.css'
 
+const url = "http://localhost:5000/records";
 
 const EditTable1 = () => {
     const [records, setRecords] = useState([]);
 
     const deleteRecord = async (id) => {
         try {
-            const deleteRecord = await fetch(`http://localhost:5000/records/${id}`, {
+            const deleteRecord = await fetch(`${url}/${id}`, {
                 method: "DELETE"
             });
             setRecords(records.filter((record) => record.id !== id))
@@ -19,7 +20,7 @@ const EditTable1 = () => {
 
     const getRecords = async () => {
         try {
-            const response = await fetch("http://localhost:5000/records");
+            const response = await fetch(url);
             const jsonDate = await response.json();
 
             setRecords(jsonDate[0]);
@@ -31,8 +32,6 @@ const EditTable1 = () => {
 
     useEffect(() => {
         getRecords()
-
-
     }, []);
 
     let i = 1;
@@ -48,7 +47,7 @@ const EditTable1 = () => {
 
     return (
         <div className={"table-cover"}>
-            <h2>Members</h2>
+            <h2>Члени студентської організації</h2>
             <table className="table ">
                 <thead className="thead-light">
                 <tr>
@@ -81,29 +80,9 @@ const EditTable1 = () => {
                         </tr>)
                     })
                 }
-                {/*<tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                    <th scope="col">Handle</th>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td className="table-btn">
-                        <button type="button" className="btn btn-warning">edit</button>
-                    </td>
-                    <td className="table-btn">
-                        <button type="button" className="btn btn-danger">del</button>
-                    </td>
-                </tr>*/}
                 </tbody>
             </table>
-            <AddRecord/>
+            <AddRecord attr={records[0] && Object.keys(records[0])} />
         </div>
     )
 };
@@ -111,7 +90,7 @@ const EditTable1 = () => {
 
 //ADD
 
-const AddRecord = () => {
+const AddRecord = (props) => {
     const [input1, setInput1] = useState("1111");
     const [input2, setInput2] = useState("2222");
     const [input3, setInput3] = useState("333");
@@ -121,11 +100,10 @@ const AddRecord = () => {
     const [input7, setInput7] = useState("777");
 
     const onSubmit = async e => {
-        console.log('blet');
         e.preventDefault();
         try {
             const body = {input1, input2, input3, input4, input5, input6, input7};
-            const response = await fetch(`http://localhost:5000/records`, {
+            const response = await fetch(`${url}`, {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)
@@ -140,62 +118,61 @@ const AddRecord = () => {
         }
     };
 
+    console.log(props.attr);
     return (
         <>
             <div className="container">
 
-                <button type="button" className="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">Add
+                <button type="button" className="btn btn-success add-btn btn-lg" data-toggle="modal" data-target="#addModal">Add
                     new record
                 </button>
-                <div className="modal fade" id="myModal">
+                <div className="modal fade" id="addModal">
                     <div className="modal-dialog modal-xl">
                         <div className="modal-content">
                             <form className={'d-flex add-record'} onSubmit={onSubmit}>
                                 <label className={"d-flex align-items-center"}>
-                                    full_name
+                                    {props.attr && props.attr[1]}
                                     <input value={input1}
                                            onChange={e => setInput1(e.target.value)}
                                            type="text" className={"form-control"}/>
                                 </label>
                                 <label className={"d-flex align-items-center"}>
-                                    date_of_birth
+                                    {props.attr && props.attr[2]}
                                     <input value={input2}
                                            onChange={e => setInput2(e.target.value)}
                                            type="text" className={"form-control"}/>
                                 </label>
                                 <label className={"d-flex align-items-center"}>
-                                    english_level
+                                    {props.attr && props.attr[3]}
                                     <input value={input3}
                                            onChange={e => setInput3(e.target.value)}
                                            type="text" className={"form-control"}/>
                                 </label>
                                 <label className={"d-flex align-items-center"}>
-                                    committee
+                                    {props.attr && props.attr[4]}
                                     <input value={input4}
                                            onChange={e => setInput4(e.target.value)}
                                            type="text" className={"form-control"}/>
                                 </label>
                                 <label className={"d-flex align-items-center"}>
-                                    date_of_joining
+                                    {props.attr && props.attr[5]}
                                     <input value={input5}
                                            onChange={e => setInput5(e.target.value)}
                                            type="text" className={"form-control"}/>
                                 </label>
                                 <label className={"d-flex align-items-center"}>
-                                    age
+                                    {props.attr && props.attr[6]}
                                     <input value={input6}
                                            onChange={e => setInput6(e.target.value)}
                                            type="text" className={"form-control"}/>
                                 </label>
                                 <label className={"d-flex align-items-center"}>
-                                    status
+                                    {props.attr && props.attr[7]}
                                     <input value={input7}
                                            onChange={e => setInput7(e.target.value)}
                                            type="text" className={"form-control"}/>
                                 </label>
-
-                                <button type="submit" className="btn btn-success mx-auto add-btn">Add new record
-                                </button>
+                                <button type="submit" className="btn btn-success mx-auto add-btn">Add new record</button>
                             </form>
                         </div>
                     </div>
@@ -208,44 +185,43 @@ const AddRecord = () => {
 //EDIT
 const EditRecord = (props) => {
 
-    const [input1, setInput1] = useState("111");
-    const [input2, setInput2] = useState("222");
-    const [input3, setInput3] = useState("3333");
-    const [input4, setInput4] = useState("444");
-    const [input5, setInput5] = useState("5555");
-    const [input6, setInput6] = useState("666");
-    const [input7, setInput7] = useState("7477");
+    const {listValue} = props;
 
-    const onSubmit = async e => {
-        console.log('blet');
+    const [input1, setInput1] = useState(listValue[1]);
+    const [input2, setInput2] = useState(listValue[2]);
+    const [input3, setInput3] = useState(listValue[3]);
+    const [input4, setInput4] = useState(listValue[4]);
+    const [input5, setInput5] = useState(listValue[5]);
+    const [input6, setInput6] = useState(listValue[6]);
+    const [input7, setInput7] = useState(listValue[7]);
+
+    const onSubmitEdit = async e => {
         e.preventDefault();
         try {
             const body = {input1, input2, input3, input4, input5, input6, input7};
-            const response = await fetch(`http://localhost:5000/records`, {
-                method: "POST",
+            const response = await fetch(`http://localhost:5000/records/${listValue[0]}`, {
+                method: "PUT",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)
             });
-
             console.log(body);
             console.log(response);
-
             window.location = '/edit-table/1';
         } catch (err) {
             console.error(err.message)
         }
     };
-    console.log(props.listValue);
+    console.log(listValue[0]);
     return (
         <>
-
             <div className="container">
-                <button type="button" className="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal">edit
+                <button type="button" className="btn btn-warning btn-lg" data-toggle="modal"
+                        data-target={`#id${listValue[0]}`}>edit
                 </button>
-                <div className="modal fade" id="myModal">
+                <div className="modal fade" id={`id${listValue[0]}`}>
                     <div className="modal-dialog modal-xl">
                         <div className="modal-content">
-                            <form className={'d-flex add-record'} onSubmit={onSubmit}>
+                            <form className={'d-flex add-record'} onSubmit={onSubmitEdit}>
                                 <label className={"d-flex align-items-center"}>
                                     full_name
                                     <input value={input1}
@@ -288,7 +264,7 @@ const EditRecord = (props) => {
                                            onChange={e => setInput7(e.target.value)}
                                            type="text" className={"form-control"}/>
                                 </label>
-                                <button type="submit" className="btn btn-warning mx-auto add-btn">edit record
+                                <button type="submit" className="btn btn-warning mx-auto edit-btn">edit record
                                 </button>
                             </form>
                         </div>

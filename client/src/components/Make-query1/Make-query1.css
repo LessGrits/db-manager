@@ -4,6 +4,7 @@ form{
 
 .select-row{
     display: flex;
+    justify-content: space-between;
 }
 
 label{
@@ -23,6 +24,6 @@ form{
     flex-direction: column;
     align-items: center;
 }
-.btn-success{
+.btn-make-query{
     margin-top:100px;
 }
