@@ -71,7 +71,7 @@ const EditTable4 = () => {
                             <td className="table-btn">
                                 <button type="button"
                                         className="btn btn-danger"
-                                        onClick={() => deleteRecord(obj.id)}>del
+                                        onClick={() => deleteRecord(obj.id)}>Вид
                                 </button>
                             </td>
                         </tr>)
@@ -86,13 +86,13 @@ const EditTable4 = () => {
 
 //ADD
 const AddRecord = (props) => {
-    const [input1, setInput1] = useState("1111");
-    const [input2, setInput2] = useState("2222");
-    const [input3, setInput3] = useState("333");
-    const [input4, setInput4] = useState("4444");
-    const [input5, setInput5] = useState("55555");
-    const [input6, setInput6] = useState("6666");
-    const [input7, setInput7] = useState("777");
+    const [input1, setInput1] = useState("");
+    const [input2, setInput2] = useState("");
+    const [input3, setInput3] = useState("");
+    const [input4, setInput4] = useState("");
+    const [input5, setInput5] = useState("");
+    const [input6, setInput6] = useState("");
+    const [input7, setInput7] = useState("");
 
     const onSubmit = async e => {
         e.preventDefault();
@@ -167,7 +167,7 @@ const AddRecord = (props) => {
                                            onChange={e => setInput7(e.target.value)}
                                            type="text" className={"form-control"}/>
                                 </label>
-                                <button type="submit" className="btn btn-success mx-auto add-btn">Add new record</button>
+                                <button type="submit" className="btn btn-success mx-auto add-btn">Додати запис</button>
                             </form>
                         </div>
                     </div>
@@ -212,7 +212,7 @@ const EditRecord = (props) => {
         <>
             <div className="container">
                 <button type="button" className="btn btn-warning btn-lg" data-toggle="modal"
-                        data-target={`#id${listValue[0]}`}>edit
+                        data-target={`#id${listValue[0]}`}>Ред
                 </button>
                 <div className="modal fade" id={`id${listValue[0]}`}>
                     <div className="modal-dialog modal-xl">
@@ -260,7 +260,7 @@ const EditRecord = (props) => {
                                            onChange={e => setInput7(e.target.value)}
                                            type="text" className={"form-control"}/>
                                 </label>
-                                <button type="submit" className="btn btn-warning mx-auto edit-btn">edit record
+                                <button type="submit" className="btn btn-warning mx-auto edit-btn">Редагувати
                                 </button>
                             </form>
                         </div>

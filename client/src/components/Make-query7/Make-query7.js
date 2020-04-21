@@ -1,59 +1,133 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import '../Make-query1/Make-query1.css'
 
-function MakeQuery7(){
-return(
-    <>
+const firstName = 'apparatus';
+const secondName = 'seats_place';
+const db = 'location';
+const url = 'http://localhost:5000/query7';
 
-        <form action="#">
-            <h2>Запит №1</h2>
-            <div className="select-row">
-                <label htmlFor="">критерій
-                <select className="custom-select">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select></label>
-                <label htmlFor="">критерій
-                <select className="custom-select">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select></label>
-            </div>
-            <button type="button" className="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">Зробити запит</button>
-        </form>
-        <table className="table ">
-            <thead className="thead-light">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-                <th scope="col">Handle</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td>@fat</td>
-            </tr>
-            </tbody>
-        </table>
-    </>
-)
-}
+const MakeQuery7 = () => {
+
+    const [first, setFirst] = useState([]);
+    const [second, setSecond] = useState([]);
+    const [value1, setValue1] = useState('');
+    const [value2, setValue2] = useState('');
+
+    const [records, setRecords] = useState();
+
+    let firstList = [];
+    let secoundList = [];
+
+    const getAttr = async () => {
+        try {
+            const url = `http://localhost:5000/get-categories/${firstName}/${secondName}/${db}`;
+            const response = await fetch(url);
+            const jsonDate = await response.json();
+            console.log(jsonDate);
+            setLists(jsonDate[0])
+        } catch (err) {
+            console.error(err.message);
+        }
+    };
+
+    useEffect(() => {
+        getAttr();
+    }, []);
+
+    const setLists = (list) => {
+        list.forEach((obj) => {
+            firstList.push(obj[firstName]);
+            secoundList.push(obj[secondName]);
+        });
+        firstList = unique(firstList);
+        secoundList = unique(secoundList);
+        setFirst(firstList);
+        setSecond(secoundList);
+    };
+
+    function unique(arr) {
+        return Array.from(new Set(arr));
+    }
+
+    const onSubmitForm = async e => {
+        e.preventDefault();
+        const response = await fetch(`${url}/${value1}/${value2}`);
+
+        const jsonDate = await response.json();
+        console.log(jsonDate[0]);
+        setRecords(jsonDate[0]);
+        try {
+
+        } catch (err) {
+            console.error(err.message);
+        }
+    };
+
+    let i = 1;
+    const writeAtr = () => {
+        if (!records[0]) return;
+
+
+        return Object.keys(records[0]).map(el => {
+            if (el === 'id') return (<th scope="col">#</th>);
+
+            return <td>{el}</td>
+        })
+    };
+
+    return (
+        <>
+            <form onSubmit={onSubmitForm}>
+                <h2>Запит №7</h2>
+                <div className="select-row">
+                    <label>Наявність апаратури
+                        <select value={value1} onChange={e => setValue1(e.target.value)} className="custom-select">
+                            <option  value='0'>Вибрати</option>
+                            {first.map((el) => (
+                                <option key={el} value={el}>{el}</option>
+                            ))}
+                        </select>
+                    </label>
+
+                    <label>Кл. сидячих місць
+                        <select value={value2} onChange={e => setValue2(e.target.value)} className="custom-select">
+                            <option  value='0'>Вибрати</option>
+                            {second.map((el) => (
+                                <option key={el} value={el}>{el}</option>
+                            ))}
+                        </select>
+                    </label>
+                </div>
+                <button type="submit" className="btn btn-success btn-make-query btn-lg" data-toggle="modal"
+                        data-target="#myModal">Зробити запит
+                </button>
+            </form>
+            <table className="table ">
+                <thead className="thead-light">
+                <tr>
+                    {
+                        records ? writeAtr() : ''
+                    }
+                </tr>
+                </thead>
+                <tbody>
+                {records ? (
+                    records.map((obj) => {
+                        return (<tr key={obj.id}>
+                            <td>{i++}</td>
+                            {Object.keys(obj).map((atr) => {
+                                if (atr === 'id') return;
+                                return (
+                                    <td>{obj[atr]}</td>
+                                )
+                            })}
+                        </tr>)
+                    })) : ''
+                }
+                </tbody>
+            </table>
+        </>
+    )
+};
 
 export default MakeQuery7;

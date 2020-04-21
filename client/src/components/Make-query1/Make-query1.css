@@ -1,16 +1,23 @@
 form{
-    margin-top: -100px;
+    margin: -100px auto;
 }
 
 .select-row{
     display: flex;
     justify-content: space-between;
+    width: 100%;
+}
+select{
+    margin-top: 10px;
 }
 
 label{
     text-align: center;
     font-size: 20px;
     margin: 0 5px;
+}
+option{
+    text-align: center;
 }
 
 h2{
@@ -23,6 +30,7 @@ form{
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 600px;
 }
 .btn-make-query{
     margin-top:100px;

@@ -65,7 +65,6 @@ const MakeQuery1 = () => {
     };
 
     let i = 1;
-
     const writeAtr = () => {
         if (!records[0]) return;
 
@@ -81,17 +80,20 @@ const MakeQuery1 = () => {
         <>
             <form onSubmit={onSubmitForm}>
                 <h2>Запит №1</h2>
+                <h3>Вивести дані з таблиці "{db}" <br/> за наступними критеріями</h3>
                 <div className="select-row">
-                    <label>{firstName}
+                    <label>Вік
                         <select value={value1} onChange={e => setValue1(e.target.value)} className="custom-select">
+                            <option  value='0'>вибрати</option>
                             {first.map((el) => (
                                 <option key={el} value={el}>{el}</option>
                             ))}
                         </select>
                     </label>
 
-                    <label>{secondName}
+                    <label>Статус
                         <select value={value2} onChange={e => setValue2(e.target.value)} className="custom-select">
+                            <option  value='0'>вибрати</option>
                             {second.map((el) => (
                                 <option key={el} value={el}>{el}</option>
                             ))}
@@ -105,7 +107,6 @@ const MakeQuery1 = () => {
             <table className="table ">
                 <thead className="thead-light">
                 <tr>
-
                     {
                         records ? writeAtr() : ''
                     }

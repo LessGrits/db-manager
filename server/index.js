@@ -22,7 +22,7 @@ app.post("/records", async (req,res)=>{
 
        const {input1,input2,input3,input4,input5,input6,input7}  = req.body;
        console.log(input1);
-        const newRecord = await pool.query(`INSERT INTO members (full_name,date_of_birth,english_level,committee,date_of_joining,age,status) VALUES(?,?,?,?,?,?,?) `, [input1,input2,input3,input4,input5,input6,input7]);
+        const newRecord = await pool.query(`INSERT INTO members (full_name,date_of_birth,english_level,committee,year_of_joining,age,status) VALUES(?,?,?,?,?,?,?) `, [input1,input2,input3,input4,input5,input6,input7]);
 
       res.json('newRecord');
    }
@@ -65,7 +65,7 @@ app.put("/records/:id", async (req, res) =>{
     try{
         const {id}= req.params;
         const {input1,input2,input3,input4,input5,input6,input7}  = req.body;
-        const updateRecord = await pool.query("UPDATE members SET full_name = ?, date_of_birth = ?, english_level = ?, committee = ?, date_of_joining = ?, age = ?, status =?  WHERE id = ? ", [input1,input2,input3,input4,input5,input6,input7, id]);
+        const updateRecord = await pool.query("UPDATE members SET full_name = ?, date_of_birth = ?, english_level = ?, committee = ?, year_of_joining = ?, age = ?, status =?  WHERE id = ? ", [input1,input2,input3,input4,input5,input6,input7, id]);
 
         res.json(`success update record with id ${id}`);
     }catch(err){
@@ -220,7 +220,7 @@ app.post( url4, async (req,res)=>{
 
         const {input1,input2,input3,input4,input5,input6,input7}  = req.body;
         console.log(input1);
-        const newRecord = await pool.query(`INSERT INTO ${db4} (name,hr_name,site_link,cooperation_event,specialty,cooperation_date,сooperation_type) VALUES(?,?,?,?,?,?,?) `, [input1,input2,input3,input4,input5,input6,input7]);
+        const newRecord = await pool.query(`INSERT INTO ${db4} (name,hr_name,site_link,cooperation_event,specialty,cooperation_date,cooperation_type) VALUES(?,?,?,?,?,?,?) `, [input1,input2,input3,input4,input5,input6,input7]);
 
         res.json(newRecord);
     }
@@ -248,7 +248,7 @@ app.put(`${url4}/:id`, async (req, res) =>{
     try{
         const {id}= req.params;
         const {input1,input2,input3,input4,input5,input6,input7}  = req.body;
-        const updateRecord = await pool.query(`UPDATE ${db4} SET name = ?, hr_name = ?, site_link = ?, cooperation_event = ?, specialty = ?, cooperation_date = ?, сooperation_type =?  WHERE id = ? `, [input1,input2,input3,input4,input5,input6,input7, id]);
+        const updateRecord = await pool.query(`UPDATE ${db4} SET name = ?, hr_name = ?, site_link = ?, cooperation_event = ?, specialty = ?, cooperation_date = ?, cooperation_type =?  WHERE id = ? `, [input1,input2,input3,input4,input5,input6,input7, id]);
 
         res.json(`succccccccess update record with id ${id}`);
     }catch(err){
@@ -340,7 +340,7 @@ app.post( url6, async (req,res)=>{
 
         const {input1,input2,input3,input4,input5,input6,input7}  = req.body;
         console.log(input1);
-        const newRecord = await pool.query(`INSERT INTO ${db6} (event,topic,num_production,manufacture_date,printery,author,production_type) VALUES(?,?,?,?,?,?,?) `, [input1,input2,input3,input4,input5,input6,input7]);
+        const newRecord = await pool.query(`INSERT INTO ${db6} (event,topic,num_production,year_of_manufacture,printery,author,production_type) VALUES(?,?,?,?,?,?,?) `, [input1,input2,input3,input4,input5,input6,input7]);
 
         res.json(newRecord);
     }
@@ -368,7 +368,7 @@ app.put(`${url6}/:id`, async (req, res) =>{
     try{
         const {id}= req.params;
         const {input1,input2,input3,input4,input5,input6,input7}  = req.body;
-        const updateRecord = await pool.query(`UPDATE ${db6} SET event = ?, topic = ?, num_production = ?, manufacture_date = ?, printery = ?, author = ?, production_type =?  WHERE id = ? `, [input1,input2,input3,input4,input5,input6,input7, id]);
+        const updateRecord = await pool.query(`UPDATE ${db6} SET event = ?, topic = ?, num_production = ?, year_of_manufacture = ?, printery = ?, author = ?, production_type =?  WHERE id = ? `, [input1,input2,input3,input4,input5,input6,input7, id]);
 
         res.json(`succccccccess update record with id ${id}`);
     }catch(err){
@@ -400,7 +400,7 @@ app.post( url7, async (req,res)=>{
 
         const {input1,input2,input3,input4,input5,input6,input7}  = req.body;
         console.log(input1);
-        const newRecord = await pool.query(`INSERT INTO ${db7} (name,address,price,apparatus,wifi,location_area,seats_place) VALUES(?,?,?,?,?,?,?) `, [input1,input2,input3,input4,input5,input6,input7]);
+        const newRecord = await pool.query(`INSERT INTO ${db7} (name,address,\`price_грн/добу\`,apparatus,wifi,location_area_m2,seats_place) VALUES(?,?,?,?,?,?,?) `, [input1,input2,input3,input4,input5,input6,input7]);
 
         res.json(newRecord);
     }
@@ -415,7 +415,7 @@ app.put(`${url7}/:id`, async (req, res) =>{
     try{
         const {id}= req.params;
         const {input1,input2,input3,input4,input5,input6,input7}  = req.body;
-        const updateRecord = await pool.query(`UPDATE ${db7} SET name = ?, address = ?, price = ?, apparatus = ?, wifi = ?, location_area = ?, seats_place =?  WHERE id = ? `, [input1,input2,input3,input4,input5,input6,input7, id]);
+        const updateRecord = await pool.query(`UPDATE ${db7} SET name = ?, address = ?, \`price_грн/добу\` = ?, apparatus = ?, wifi = ?, location_area_m2 = ?, seats_place =?  WHERE id = ? `, [input1,input2,input3,input4,input5,input6,input7, id]);
 
         res.json(`succccccccess update record with id ${id}`);
     }catch(err){
@@ -476,7 +476,7 @@ app.put(`${url8}/:id`, async (req, res) =>{
         const {input1,input2,input3,input4,input5,input6,input7}  = req.body;
         const updateRecord = await pool.query(`UPDATE ${db8} SET full_name = ?, age = ?, email = ?, phone = ?, english_level = ?, working_experience = ?, specialty =?  WHERE id = ? `, [input1,input2,input3,input4,input5,input6,input7, id]);
 
-        res.json(`succccccccess update record with id ${id}`);
+        res.json(`success update record with id ${id}`);
     }catch(err){
         console.error(err.message)
     }
@@ -508,7 +508,7 @@ app.delete(`${url8}/:id`, async (req,res)=>{
 });
 
 
-/////////////////////////////QUERIES////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////QUERIES////////////////////////////////
 
 app.get('/get-categories/:attr1/:attr2/:table', async (req,res)=>{
     try{
@@ -534,9 +534,10 @@ app.get("/query1/:age/:status",  async (req, res)=>{
     }
 });
 
-app.get("/query2",  async (req, res)=>{
+
+app.get("/query2/:numMembers/:activityLevel",  async (req, res)=>{
     try{
-        const {numMembers, activityLevel} =  req.body;
+        const {numMembers, activityLevel} =  req.params;
         const allRecords = await pool.query(`SELECT * FROM ${db2} WHERE num_members = ? AND activity_level = ?`,[numMembers,activityLevel]);
         await res.json(allRecords)
     }
@@ -545,29 +546,31 @@ app.get("/query2",  async (req, res)=>{
     }
 });
 
-app.get("/query3",  async (req, res)=>{
+
+
+app.get("/query3/:numOrginizers/:topic",  async (req, res)=>{
     try{
-        const {numOrginizers, topic} =  req.body;
-        const allRecords = await pool.query(`SELECT * FROM ${db3} WHERE num_orginizers = ? AND topic = ?`,[numOrginizers,topic]);
+        const {numOrginizers, topic} =  req.params;
+        const allRecords = await pool.query(`SELECT * FROM ${db3} WHERE num_orginizers = ? OR topic = ?`,[numOrginizers,topic]);
         await res.json(allRecords)
     }
     catch(err){
         console.error(err.message)
     }
 });
-app.get("/query4",  async (req, res)=>{
+app.get("/query4/:cooperationType/:cooperationDate",  async (req, res)=>{
     try{
-        const {cooperationType, cooperationDate} =  req.body;
-        const allRecords = await pool.query(`SELECT * FROM ${db4} WHERE cooperation_type = ? AND cooperation_date = ?`,[cooperationType,cooperationDate]);
+        const {cooperationType, cooperationDate} =  req.params;
+        const allRecords = await pool.query(`SELECT * FROM ${db4} WHERE cooperation_type = ? OR cooperation_date = ?`,[cooperationType,cooperationDate]);
         await res.json(allRecords)
     }
     catch(err){
         console.error(err.message)
     }
 });
-app.get("/query5",  async (req, res)=>{
+app.get("/query5/:event/:facultyName",  async (req, res)=>{
     try{
-        const {event, facultyName} =  req.body;
+        const {event, facultyName} =  req.params;
         const allRecords = await pool.query(`SELECT * FROM ${db5} WHERE event = ? AND faculty_name = ?`,[event,facultyName]);
         await res.json(allRecords)
     }
@@ -575,9 +578,9 @@ app.get("/query5",  async (req, res)=>{
         console.error(err.message)
     }
 });
-app.get("/query6",  async (req, res)=>{
+app.get("/query6/:author/:productionType",  async (req, res)=>{
     try{
-        const {author, productionType} =  req.body;
+        const {author, productionType} =  req.params;
         const allRecords = await pool.query(`SELECT * FROM ${db6} WHERE author = ? AND production_type = ?`,[author,productionType]);
         await res.json(allRecords)
     }
@@ -585,9 +588,9 @@ app.get("/query6",  async (req, res)=>{
         console.error(err.message)
     }
 });
-app.get("/query7",  async (req, res)=>{
+app.get("/query7/:apparatus/:seatsPlace",  async (req, res)=>{
     try{
-        const {apparatus, seatsPlace} =  req.body;
+        const {apparatus, seatsPlace} =  req.params;
         const allRecords = await pool.query(`SELECT * FROM ${db7} WHERE apparatus = ? AND seats_place = ?`,[apparatus,seatsPlace]);
         await res.json(allRecords)
     }
@@ -596,9 +599,9 @@ app.get("/query7",  async (req, res)=>{
     }
 });
 
-app.get("/query8",  async (req, res)=>{
+app.get("/query8/:specialty/:workingExperience",  async (req, res)=>{
     try{
-        const {specialty, workingExperience} =  req.body;
+        const {specialty, workingExperience} =  req.params;
         const allRecords = await pool.query(`SELECT * FROM ${db8} WHERE specialty = ? AND working_experience = ?`,[specialty,workingExperience]);
         await res.json(allRecords)
     }
@@ -606,3 +609,10 @@ app.get("/query8",  async (req, res)=>{
         console.error(err.message)
     }
 });
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+

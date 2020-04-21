@@ -26,6 +26,7 @@ import MakeQuery6 from "../Make-query6";
 import MakeQuery7 from "../Make-query7";
 import MakeQuery8 from "../Make-query8";
 
+
  const App = (props)=> {
 
     return (
@@ -46,6 +47,7 @@ import MakeQuery8 from "../Make-query8";
                         <Route path={"/make-query/7"} component={MakeQuery7}/>
                         <Route path={"/make-query/8"} component={MakeQuery8}/>
 
+
                         <Route path={"/edit-table/1"} component={EditTable1}/>
                         <Route path={"/edit-table/2"} component={EditTable2}/>
                         <Route path={"/edit-table/3"} component={EditTable3}/>
@@ -56,7 +58,7 @@ import MakeQuery8 from "../Make-query8";
                         <Route path={"/edit-table/8"} component={EditTable8}/>
 
                         <footer className="footer">
-                            <p> &copy; Підготував студент 2КН-17Б Гриценюк О.В.</p>
+                            <p> &copy; Підготував студент групи 2КН-17б Гриценюк О.В.</p>
                         </footer>
                     </div>
                 </div>
