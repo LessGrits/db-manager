@@ -1,4 +1,18 @@
-.mainBtn{
-    width: 40%;
-    text-align: center;
+
+.list li .mainStr {
+    font-size: 35px;
+    padding-top: 120px;
+    width: 400px;
+    height: 30vh;
+}
+
+
+.list li:first-child .mainStr:after {
+    background-image: url("../Select-one-query/img/main1.jpeg");
+
+}
+
+.list li:last-child .mainStr:after {
+    background-image: url("../Select-one-query/img/main2.png");
+
 }

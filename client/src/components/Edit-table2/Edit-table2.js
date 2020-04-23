@@ -63,6 +63,7 @@ const EditTable2 = () => {
                             <td>{i++}</td>
                             {Object.keys(obj).map((atr) => {
                                 if (atr === 'id') return;
+                                if(atr ==='img') return (<td><img className={'img'} src={require(`../App/img/commetties/${obj[atr]}`)}  alt=""/></td>);
                                 return (
                                     <td>{obj[atr]}</td>
                                 )
@@ -120,8 +121,7 @@ const AddRecord = (props) => {
         <>
             <div className="container">
 
-                <button type="button" className="btn btn-success add-btn btn-lg" data-toggle="modal" data-target="#addModal">Add
-                    new record
+                <button type="button" className="btn btn-success add-btn btn-lg" data-toggle="modal" data-target="#addModal">Додати запис
                 </button>
                 <div className="modal fade" id="addModal">
                     <div className="modal-dialog modal-xl">

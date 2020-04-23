@@ -1,10 +1,16 @@
 h1 {
-    font-size: 32px;
+    font-size: 42px;
     text-align: center;
     font-weight: 400;
-    border-bottom: 2px solid #2bc2ff;
+    border-bottom: 4px solid #006bffb5;
     padding-bottom: 20px;
 }
 h1 a{
     color: inherit;
+    transition: .3s;
+}
+
+h1 a:hover{
+    color: #006bffb5;
+    transition: .3s;
 }

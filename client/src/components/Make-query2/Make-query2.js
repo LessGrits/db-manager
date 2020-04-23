@@ -118,6 +118,7 @@ const MakeQuery2 = () => {
                             <td>{i++}</td>
                             {Object.keys(obj).map((atr) => {
                                 if (atr === 'id') return;
+                                if(atr ==='img') return (<td><img className={'img'} src={require(`../App/img/commetties/${obj[atr]}`)}  alt=""/></td>);
                                 return (
                                     <td>{obj[atr]}</td>
                                 )

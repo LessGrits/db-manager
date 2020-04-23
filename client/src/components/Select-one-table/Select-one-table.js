@@ -1,5 +1,5 @@
 import React from "react";
-import "./Select-one-table.css"
+import "../Select-one-query/Select-one-query.css"
 
 import MainBtnLink from "../Main-btn-link";
 

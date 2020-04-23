@@ -80,7 +80,6 @@ const MakeQuery1 = () => {
         <>
             <form onSubmit={onSubmitForm}>
                 <h2>Запит №1</h2>
-                <h3>Вивести дані з таблиці "{db}" <br/> за наступними критеріями</h3>
                 <div className="select-row">
                     <label>Вік
                         <select value={value1} onChange={e => setValue1(e.target.value)} className="custom-select">

@@ -149,7 +149,7 @@ app.delete(`${url2}/:id`, async (req,res)=>{
 
 
 
-//////////////////////////////////////////committee #######3
+//////////////////////////////////////////events #######3
 //create a record
 const url3 = "/events";
 const db3 = "events";
@@ -558,6 +558,7 @@ app.get("/query3/:numOrginizers/:topic",  async (req, res)=>{
         console.error(err.message)
     }
 });
+
 app.get("/query4/:cooperationType/:cooperationDate",  async (req, res)=>{
     try{
         const {cooperationType, cooperationDate} =  req.params;
@@ -603,6 +604,34 @@ app.get("/query8/:specialty/:workingExperience",  async (req, res)=>{
     try{
         const {specialty, workingExperience} =  req.params;
         const allRecords = await pool.query(`SELECT * FROM ${db8} WHERE specialty = ? AND working_experience = ?`,[specialty,workingExperience]);
+        await res.json(allRecords)
+    }
+    catch(err){
+        console.error(err.message)
+    }
+});
+
+
+
+
+app.get('/get-categories/:attr1/:attr2/:attr3/:table', async (req,res)=>{
+    try{
+        const {attr1,attr2,attr3,table} = req.params;
+        const allRecords = await pool.query(`SELECT ${attr1},${attr2},${attr3} FROM ${table} `);
+        await res.json(allRecords)
+
+    } catch(err){
+        console.error(err.message)
+    }
+
+});
+
+
+
+app.get("/query9/:numOrginizers/:date/:topic",  async (req, res)=>{
+    try{
+        const {numOrginizers,date, topic} =  req.params;
+        const allRecords = await pool.query(`SELECT name, img, main_organizer, num_participants, location, num_orginizers, topic FROM ${db3} WHERE (num_orginizers = ? AND date = ?) OR topic = ?`,[numOrginizers,date,topic]);
         await res.json(allRecords)
     }
     catch(err){

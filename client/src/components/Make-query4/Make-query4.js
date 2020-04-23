@@ -10,8 +10,8 @@ const MakeQuery4 = () => {
 
     const [first, setFirst] = useState([]);
     const [second, setSecond] = useState([]);
-    const [value1, setValue1] = useState('');
-    const [value2, setValue2] = useState('');
+    const [value1, setValue1] = useState('0');
+    const [value2, setValue2] = useState('0');
 
     const [records, setRecords] = useState();
 

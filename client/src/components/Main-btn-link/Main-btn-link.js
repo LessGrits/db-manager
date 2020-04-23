@@ -5,8 +5,9 @@ import './Main-btn-link.css'
 const MainBtnLink = (props)=>{
     const {name} = props;
     const {id} = props;
+    const {className} = props;
     return(
-        <li ><NavLink to={id}>{name}</NavLink></li>
+        <li ><NavLink className={className} to={id}><span>{name}</span></NavLink></li>
     )
 };
 

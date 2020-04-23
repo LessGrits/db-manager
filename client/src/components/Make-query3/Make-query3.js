@@ -10,8 +10,8 @@ const MakeQuery3 = () => {
 
     const [first, setFirst] = useState([]);
     const [second, setSecond] = useState([]);
-    const [value1, setValue1] = useState('');
-    const [value2, setValue2] = useState('');
+    const [value1, setValue1] = useState('0');
+    const [value2, setValue2] = useState('0');
 
     const [records, setRecords] = useState();
 
@@ -117,6 +117,7 @@ const MakeQuery3 = () => {
                             <td>{i++}</td>
                             {Object.keys(obj).map((atr) => {
                                 if (atr === 'id') return;
+                                if(atr ==='img') return (<td><img className={'img'} src={require(`../App/img/events/${obj[atr]}`)}  alt=""/></td>);
                                 return (
                                     <td>{obj[atr]}</td>
                                 )

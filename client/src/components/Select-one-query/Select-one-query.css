@@ -1,0 +1,92 @@
+.list li  {
+    vertical-align: middle;
+}
+
+.list li a {
+    margin: 10px;
+    /*border: 3px solid #006bffb5;*/
+    display: block;
+    padding-top: 90px;
+    width: 300px;
+    height: 200px;
+    text-align: center;
+    font-size: 27px;
+    color: #fff;
+    position: relative;
+    min-width: 100px;
+    transition: .3s;
+}
+
+.list li a span {
+    background: #80808059;
+    font-weight: bold;
+}
+
+.list li:first-child a:after {
+    background-image: url("./img/img1.jpg");
+
+}
+
+.list li:nth-child(2) a:after {
+    background-image: url("./img/img2.jpg");
+
+}
+
+.list li:nth-child(3) a:after {
+    background-image: url("./img/img3.jpg");
+
+}
+
+.list li:nth-child(4) a:after {
+    background-image: url("./img/img4.jpg");
+
+}
+
+.list li:nth-child(5) a:after {
+    background-image: url("./img/img5.jpg");
+
+}
+
+.list li:nth-child(6) a:after {
+    background-image: url("./img/img6.jpg");
+
+}
+
+.list li:nth-child(7) a:after {
+    background-image: url("./img/img7.jpg");
+
+}
+
+.list li:nth-child(8) a:after {
+    background-image: url("./img/img8.jpg");
+
+}
+
+.list li:nth-child(9) a:after {
+    background-image: url("./img/img3.jpg");
+
+}
+
+.list li a:hover {
+    background: rgba(0, 107, 255, 0.57);
+    color: #fff;
+    transition: .3s;
+}
+.list li a:hover span{
+    background: none;
+    transition: .3s;
+}
+
+
+.list li a:after {
+    background-repeat: no-repeat;
+    background-position: center ;
+    background-size: cover;
+    content: "";
+    /*opacity: 0.6;*/
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1; }

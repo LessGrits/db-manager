@@ -12,6 +12,7 @@ const SelectOneQuery =(props)=>{
         <>
             <ul className="list">
                     {listBtn}
+                <MainBtnLink name={`Запит №9`} id={`make-query/9`}/>
             </ul>
         </>
     )

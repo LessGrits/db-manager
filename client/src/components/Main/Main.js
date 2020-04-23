@@ -8,8 +8,8 @@ const Main = (props) =>{
     return(
         <><section className="body">
             <ul className="list">
-                <MainBtnLink className={"mainBtn"}  name={"Запити"} id={"select-one-query"}/>
-                <MainBtnLink className={"mainBtn"}  name={"Редагувати"} id={"select-one-table"}/>
+                <MainBtnLink className={"mainBtn mainStr"}  name={"Пошук інформації"} id={"select-one-query"}/>
+                <MainBtnLink className={"mainBtn mainStr"}  name={"Редагування"} id={"select-one-table"}/>
             </ul>
         </section></>
     )
